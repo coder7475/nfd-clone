@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { useState } from "react";
 import "./Navbar.css";
 
@@ -159,6 +160,130 @@ function DiscordIcon() {
   );
 }
 
+function NavigationLinks(props) {
+  return (
+    <ul
+      role="menubar"
+      aria-label="Select page"
+      className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto  lg:overflow-visible lg:bg-white/0 lg:gap-6 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
+        props.isToggleOpen
+          ? "visible opacity-100 backdrop-blur-xl flex justify-center flex-col items-center font-bold text-[24px] underline"
+          : "invisible opacity-0"
+      }`}
+    >
+      <li role="none" className="flex items-stretch">
+        <a
+          role="menuitem"
+          aria-haspopup="false"
+          className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+          href="#home"
+        >
+          <span>About</span>
+        </a>
+      </li>
+      <li role="none" className="flex items-stretch">
+        <a
+          role="menuitem"
+          aria-haspopup="false"
+          className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+          href="#aggregator"
+        >
+          <span>Aggregator</span>
+        </a>
+      </li>
+      <li role="none" className="flex items-stretch">
+        <a
+          role="menuitem"
+          aria-haspopup="false"
+          className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none "
+          href="#features"
+        >
+          <span>Features</span>
+        </a>
+      </li>
+      <li role="none" className="flex items-stretch">
+        <a
+          role="menuitem"
+          aria-haspopup="false"
+          className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+          href="#roadmap"
+        >
+          <span>Roadmap</span>
+        </a>
+      </li>
+      <li role="none" className="flex items-stretch">
+        <a
+          role="menuitem"
+          aria-haspopup="false"
+          className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+          href="#contact"
+        >
+          <span>Contact Us</span>
+        </a>
+      </li>
+      <li role="none" className={`${props.isToggleOpen ? "w-full" : "hidden"}`}>
+        <a href="https://www.nfd.gg/">
+          <button
+            type="button"
+            className="text-white w-full bg-[#6b83da] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-mediumtext-sm px-5 py-2.5 text-center inline-flex items-center justify-center gap-2 dark:focus:ring-[#3b5998]/55 me-2 mb-2 rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg"
+          >
+            <DiscordIcon></DiscordIcon>
+            <>Join Discord</>
+          </button>
+        </a>
+      </li>
+      <li role="none" className={`${props.isToggleOpen ? "w-full" : "hidden"}`}>
+        <a href="https://www.nfd.gg/">
+          <button
+            type="button"
+            className="w-full text-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-mediumtext-sm px-5 py-2.5 text-center inline-flex items-center justify-center gap-2 dark:focus:ring-[#3b5998]/55 me-2 mb-2 rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg border-2 border-blue-400"
+          >
+            <TwitterIcon />
+            <>Follow Twitter</>
+          </button>
+        </a>
+      </li>
+    </ul>
+  );
+}
+
+NavigationLinks.propTypes = {
+  isToggleOpen: PropTypes.any
+}
+
+function DropDownButton(props) {
+  return (
+    <button
+      className={`relative order-10 block h-10 w-10 self-center lg:hidden
+                ${
+                  props.isToggleOpen
+                    ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
+                    : ""
+                }
+              `}
+      onClick={() => props.setIsToggleOpen(!props.isToggleOpen)}
+      aria-expanded={props.isToggleOpen ? "true" : "false"}
+      aria-label="Toggle navigation"
+    >
+      <svg
+        width="30"
+        height="13"
+        viewBox="0 0 30 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="30" height="3" rx="1.5" fill="#171717"></rect>
+        <rect y="10" width="15" height="3" rx="1.5" fill="#171717"></rect>
+      </svg>
+    </button>
+  );
+}
+
+DropDownButton.propTypes = {
+  isToggleOpen: PropTypes.any,
+  setIsToggleOpen: PropTypes.func
+}
+
 const Navbar = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
@@ -170,115 +295,12 @@ const Navbar = () => {
           className="flex items-stretch justify-between font-medium text-slate-700"
           role="navigation"
         >
-          {/*      <!-- Brand logo --> */}
           <NavLogo />
-          {/*      <!-- Mobile trigger --> */}
-          <button
-            className={`relative order-10 block h-10 w-10 self-center lg:hidden
-                ${
-                  isToggleOpen
-                    ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
-                    : ""
-                }
-              `}
-            onClick={() => setIsToggleOpen(!isToggleOpen)}
-            aria-expanded={isToggleOpen ? "true" : "false"}
-            aria-label="Toggle navigation"
-          >
-            <svg
-              width="30"
-              height="13"
-              viewBox="0 0 30 13"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="30" height="3" rx="1.5" fill="#171717"></rect>
-              <rect y="10" width="15" height="3" rx="1.5" fill="#171717"></rect>
-            </svg>
-          </button>
-          {/*      <!-- Navigation links --> */}
-          <ul
-            role="menubar"
-            aria-label="Select page"
-            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto  lg:overflow-visible lg:bg-white/0 lg:gap-6 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
-              isToggleOpen
-                ? "visible opacity-100 backdrop-blur-xl flex justify-center flex-col items-center font-bold text-[24px] underline"
-                : "invisible opacity-0"
-            }`}
-          >
-            <li role="none" className="flex items-stretch">
-              <a
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
-                href="#home"
-              >
-                <span>About</span>
-              </a>
-            </li>
-            <li role="none" className="flex items-stretch">
-              <a
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
-                href="#aggregator"
-              >
-                <span>Aggregator</span>
-              </a>
-            </li>
-            <li role="none" className="flex items-stretch">
-              <a
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none "
-                href="#features"
-              >
-                <span>Features</span>
-              </a>
-            </li>
-            <li role="none" className="flex items-stretch">
-              <a
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
-                href="#roadmap"
-              >
-                <span>Roadmap</span>
-              </a>
-            </li>
-            <li role="none" className="flex items-stretch">
-              <a
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
-                href="#contact"
-              >
-                <span>Contact Us</span>
-              </a>
-            </li>
-            <li role="none" className={`${isToggleOpen ? "w-full" : "hidden"}`}>
-              <a href="https://www.nfd.gg/">
-                <button
-                  type="button"
-                  className="text-white w-full bg-[#6b83da] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-mediumtext-sm px-5 py-2.5 text-center inline-flex items-center justify-center gap-2 dark:focus:ring-[#3b5998]/55 me-2 mb-2 rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg"
-                >
-                  <DiscordIcon></DiscordIcon>
-                  <>Join Discord</>
-                </button>
-              </a>
-            </li>
-            <li role="none" className={`${isToggleOpen ? "w-full" : "hidden"}`}>
-              <a href="https://www.nfd.gg/">
-                <button
-                  type="button"
-                  className="w-full text-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-mediumtext-sm px-5 py-2.5 text-center inline-flex items-center justify-center gap-2 dark:focus:ring-[#3b5998]/55 me-2 mb-2 rounded-tl-[32px] rounded-br-[32px] rounded-tr-lg rounded-bl-lg border-2 border-blue-400"
-                >
-                  <TwitterIcon/>
-                  <>Follow Twitter</>
-                </button>
-              </a>
-            </li>
-          </ul>
+          <DropDownButton
+            isToggleOpen={isToggleOpen}
+            setIsToggleOpen={setIsToggleOpen}
+          ></DropDownButton>
+          <NavigationLinks isToggleOpen={isToggleOpen}></NavigationLinks>
           <Socials></Socials>
         </nav>
       </div>
