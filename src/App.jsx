@@ -4,7 +4,7 @@ import Home from './components/pages/Home';
 function App() {
 
   return (
-    <main>
+    <main className="w-[80%] mx-auto">
       <Home/>
     </main>
       
