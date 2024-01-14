@@ -23,21 +23,23 @@ const Banner = () => {
           searching, and tracking any crypto related information.
         </p>
         <div>
-          <OnlyPCVersion/>
+          <OnlyPCVersion />
           <HowItWorks />
         </div>
       </div>
-      <div className="bg-white max-w-[616px] mx-auto rounded-[30px] mt-3 py-5 flex justify-center items-center flex-col gap-6">
+      <div className="bg-[#020203] max-w-[616px] mx-auto rounded-[30px] mt-3 py-5 flex justify-center items-center flex-col gap-6">
         <figure>
-          <img src="/rabbit.svg" alt="nfd rabbit" />
+          <img src="/hello.svg" alt="nfd software" />
         </figure>
-        <BannerHeader></BannerHeader>
+        <div className="syne text-center bg-gradient-to-t text-[36px] font-bold from-[#272750] to-gray-200 text-transparent bg-clip-text">
+          <h1 className="">NFD software</h1>
+          <h2 className="">“Combine”</h2>
+        </div>
         <p className="text-center w-[568px] text-md text-[#4F5662]">
-          An Alpha community 2.0 with its own platform for participating,
-          searching, and tracking any crypto related information.
+        Handle your crypto-wallets, farm activities and retrodrops on a single app.
         </p>
         <div>
-          <OnlyPCVersion/>
+          <OnlyPCVersion />
           <HowItWorks />
         </div>
       </div>
