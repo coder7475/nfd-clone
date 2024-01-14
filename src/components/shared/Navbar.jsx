@@ -15,11 +15,11 @@ const Navbar = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   return (
-    <header className="border-b-1 relative z-20 w-full border-b border-slate-200 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
-        <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
+    <header className="relative z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3">
+        <div className="relative px-8 w-full">
           <nav
             aria-label="main navigation"
-            className="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700"
+            className="flex items-stretch justify-between font-medium text-slate-700"
             role="navigation"
           >
             {/*      <!-- Brand logo --> */}
@@ -43,7 +43,7 @@ const Navbar = () => {
             <ul
               role="menubar"
               aria-label="Select page"
-              className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
+              className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
                 isToggleOpen
                   ? "visible opacity-100 backdrop-blur-sm"
                   : "invisible opacity-0"
