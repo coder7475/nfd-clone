@@ -1,0 +1,10 @@
+li {
+    color: rgb(79, 86, 98);
+    font-size: 18px;
+    line-height: 20px;
+}
+
+a:hover {
+    color: rgb(108, 82, 238);
+    text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Navbar.css';
 
 function NavLogo() {
   return (
@@ -15,7 +16,7 @@ const Navbar = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   return (
-    <header className="relative z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3">
+    <header className="relative z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3 py-1">
         <div className="relative px-8 w-full">
           <nav
             aria-label="main navigation"
@@ -43,7 +44,7 @@ const Navbar = () => {
             <ul
               role="menubar"
               aria-label="Select page"
-              className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
+              className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto  lg:overflow-visible lg:bg-white/0 lg:gap-6 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
                 isToggleOpen
                   ? "visible opacity-100 backdrop-blur-sm"
                   : "invisible opacity-0"
@@ -53,35 +54,56 @@ const Navbar = () => {
                 <a
                   role="menuitem"
                   aria-haspopup="false"
-                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
                   href="#home"
                 >
-                  <span>Home</span>
+                  <span>About</span>
                 </a>
               </li>
               <li role="none" className="flex items-stretch">
                 <a
                   role="menuitem"
-                  aria-current="page"
                   aria-haspopup="false"
-                  className="flex items-center gap-2 py-4 text-emerald-500 transition-colors duration-300 hover:text-emerald-600 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+                  href="#aggregator"
+                >
+                  <span>Aggregator</span>
+                </a>
+              </li>
+              <li role="none" className="flex items-stretch">
+                <a
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none "
                   href="#features"
                 >
                   <span>Features</span>
                 </a>
               </li>
-             
               <li role="none" className="flex items-stretch">
                 <a
                   role="menuitem"
                   aria-haspopup="false"
-                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                  href="#about"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+                  href="#roadmap"
                 >
-                  <span>About</span>
+                  <span>Roadmap</span>
+                </a>
+              </li>
+              <li role="none" className="flex items-stretch">
+                <a
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+                  href="#contact"
+                >
+                  <span>Contact Us</span>
                 </a>
               </li>
             </ul>
+            <figure>
+                <p>flas</p>
+            </figure>
           </nav>
         </div>
       </header>
