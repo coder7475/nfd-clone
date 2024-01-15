@@ -12,8 +12,8 @@ function BannerHeader() {
 
 const Banner = () => {
   return (
-    <section className="xl:flex justify-center">
-      <div className="bg-white rounded-[30px] mt-3 py-5 flex justify-center items-center flex-col gap-6">
+    <section className="xl:flex justify-center w-[95%] mx-auto">
+      <div className="bg-white rounded-[30px] xl:w-[50%] mt-3 py-5 flex justify-center items-center flex-col gap-6">
         <figure>
           <img src="/rabbit.svg" alt="nfd rabbit" />
         </figure>
@@ -27,7 +27,7 @@ const Banner = () => {
           <HowItWorks />
         </div>
       </div>
-      <div className="bg-[#020203] rounded-[30px] mt-3 py-5 flex justify-center items-center flex-col gap-6">
+      <div className="bg-[#020203] rounded-[30px] xl:w-[50%] mt-3 py-5 flex justify-center items-center flex-col gap-6">
         <figure>
           <img src="/hello.svg" alt="nfd software" />
         </figure>
