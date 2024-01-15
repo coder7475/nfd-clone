@@ -170,19 +170,19 @@ function NavigationLinks(props) {
         props.isToggleOpen
           ? "visible opacity-100 backdrop-blur-xl flex justify-center flex-col items-center font-bold text-[24px] underline"
           : "invisible opacity-0"
-      }`}
+      } `}
     >
-      <li role="none" className="flex items-stretch">
+      <li role="none" className={`flex items-stretch ${props.scrollPosition > 0? "xl:text-white": ""}`}>
         <a
           role="menuitem"
           aria-haspopup="false"
-          className="flex items-center gap-2 py-4 transition-colors duration-300 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
+          className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-blue-500 focus:text-blue-800 focus:outline-none focus-visible:outline-none"
           href="#home"
         >
           <span>About</span>
         </a>
       </li>
-      <li role="none" className="flex items-stretch">
+      <li role="none" className={`flex items-stretch ${props.scrollPosition > 0? "xl:text-white": ""}`}>
         <a
           role="menuitem"
           aria-haspopup="false"
@@ -192,7 +192,7 @@ function NavigationLinks(props) {
           <span>Aggregator</span>
         </a>
       </li>
-      <li role="none" className="flex items-stretch">
+      <li role="none" className={`flex items-stretch ${props.scrollPosition > 0? "xl:text-white": ""}`}>
         <a
           role="menuitem"
           aria-haspopup="false"
@@ -202,7 +202,7 @@ function NavigationLinks(props) {
           <span>Features</span>
         </a>
       </li>
-      <li role="none" className="flex items-stretch">
+      <li role="none" className={`flex items-stretch ${props.scrollPosition > 0? "xl:text-white": ""}`}>
         <a
           role="menuitem"
           aria-haspopup="false"
@@ -212,7 +212,7 @@ function NavigationLinks(props) {
           <span>Roadmap</span>
         </a>
       </li>
-      <li role="none" className="flex items-stretch">
+      <li role="none" className={`flex items-stretch ${props.scrollPosition > 0? "xl:text-white": ""}`}>
         <a
           role="menuitem"
           aria-haspopup="false"
@@ -222,7 +222,7 @@ function NavigationLinks(props) {
           <span>Contact Us</span>
         </a>
       </li>
-      <li role="none" className={`${props.isToggleOpen ? "w-full" : "hidden"}`}>
+      <li role="none" className={`${props.isToggleOpen ? "w-full" : "hidden"}`} >
         <a href="https://www.nfd.gg/">
           <button
             type="button"
@@ -249,8 +249,11 @@ function NavigationLinks(props) {
 }
 
 NavigationLinks.propTypes = {
-  isToggleOpen: PropTypes.any
+  isToggleOpen: PropTypes.any,
+  scrollPosition: PropTypes.number
 }
+
+
 
 function DropDownButton(props) {
   return (
@@ -304,7 +307,10 @@ const Navbar = () => {
             isToggleOpen={isToggleOpen}
             setIsToggleOpen={setIsToggleOpen}
           ></DropDownButton>
-          <NavigationLinks isToggleOpen={isToggleOpen}></NavigationLinks>
+          <NavigationLinks 
+            scrollPosition={scrollPosition}
+            isToggleOpen={isToggleOpen}
+          ></NavigationLinks>
           <Socials></Socials>
         </nav>
       </div>
