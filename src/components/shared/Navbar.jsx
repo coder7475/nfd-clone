@@ -295,14 +295,16 @@ const Navbar = () => {
   // console.log(scrollPosition);
 
   return (
-    <header className={`sticky top-0 left-0 z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3 py-1 ${scrollPosition > 0? "xl:bg-gray-500 xl:opacity-50 xl:max-w-full rounded-none": ""}` }>
+    <header className={`sticky top-0 left-0 z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3 py-1 ${scrollPosition > 0? "xl:bg-[#37313ccc] xl:max-w-full rounded-none": ""}` }>
       <div className="relative px-8 w-full">
         <nav
           aria-label="main navigation"
           className="flex items-stretch justify-between font-medium text-slate-700"
           role="navigation"
         >
-          <NavLogo />
+          <NavLogo 
+            scrollPosition={scrollPosition}
+          />
           <DropDownButton
             isToggleOpen={isToggleOpen}
             setIsToggleOpen={setIsToggleOpen}
