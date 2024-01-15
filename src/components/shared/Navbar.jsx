@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"
 import { useState } from "react";
 import "./Navbar.css";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 
 function NavLogo() {
   return (
@@ -286,6 +287,9 @@ DropDownButton.propTypes = {
 
 const Navbar = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const scrollPosition = useScrollPosition();
+
+  console.log(scrollPosition)
 
   return (
     <header className="sticky top-0 left-0 z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3 py-1">
