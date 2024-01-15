@@ -12,13 +12,13 @@ function BannerHeader() {
 
 const Banner = () => {
   return (
-    <section className="xl:flex justify-center w-[95%] mx-auto">
+    <section className="xl:flex justify-center w-[95%] mx-auto min-h-screen">
       <div className="bg-white rounded-[30px] xl:w-[50%] mt-3 py-5 flex justify-center items-center flex-col gap-6">
         <figure>
           <img src="/rabbit.svg" alt="nfd rabbit" />
         </figure>
         <BannerHeader></BannerHeader>
-        <p className="text-center w-[568px] text-md text-[#4F5662]">
+        <p className="text-center w-[568px] text-[20px] text-[#4F5662]">
           An Alpha community 2.0 with its own platform for participating,
           searching, and tracking any crypto related information.
         </p>
@@ -35,7 +35,7 @@ const Banner = () => {
           <h1 className="">NFD software</h1>
           <h2 className="">“Combine”</h2>
         </div>
-        <p className="text-center w-[568px] text-md text-[#4F5662]">
+        <p className="text-center w-[568px] text-[20px] text-[#4F5662]">
         Handle your crypto-wallets, farm activities and retrodrops on a single app.
         </p>
         <div>
