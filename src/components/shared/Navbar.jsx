@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import "./Navbar.css";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
+import NavButton from "../Buttons/NavButton";
 
 function NavbarIcon() {
   return (
@@ -48,7 +49,7 @@ function NavbarIcon() {
   );
 }
 
-function BlackNFDLogo({scrollPosition}) {
+function BlackNFDLogo({ scrollPosition }) {
   // console.log(scrollPosition)
   return (
     <svg
@@ -61,15 +62,15 @@ function BlackNFDLogo({scrollPosition}) {
     >
       <path
         d="M32.9214 0.128174H27.3516H21.4079H21.2905L21.4079 11.86V14.7671H20.8218L10.603 0.128174H0.179443V19.7746H6.24051L6.09383 5.13559H6.73815L17.0153 19.7746H21.4075H27.3512V18.3955V13.0001V11.91H32.9211H34.7045H37.6953H41.3068V7.60979H37.6953H34.7045H32.9211H27.3516V7.04225V4.75267H32.9214H34.7049H37.6957H48.6272H57.2062C61.8033 4.75267 62.6816 5.04742 62.6816 10.0253C62.6816 11.1151 62.7106 13.324 61.8029 14.0898C61.1296 14.6495 59.812 14.679 58.9917 14.7085C58.2891 14.738 57.6154 14.7671 56.9128 14.7671H48.6265V6.22532H42.7704V19.7746H57.4104C59.9576 19.7746 64.6424 19.9808 66.663 18.1252C67.8633 17.006 68.3026 15.0914 68.4196 13.5007C68.5072 12.2343 68.5369 10.938 68.5369 9.67156C68.5369 7.75698 68.5952 5.69521 67.981 3.83965C66.8691 0.481579 63.7069 0.216705 60.6617 0.157684C59.5491 0.128174 58.4365 0.128174 57.3239 0.128174H48.6276H42.7715H41.3076H37.696H34.7052H32.9214Z"
-        fill= {`${scrollPosition > 0? "#fff": "#171717"}`}
+        fill={`${scrollPosition > 0 ? "#fff" : "#171717"}`}
       ></path>
     </svg>
   );
 }
 
 BlackNFDLogo.propTypes = {
-  scrollPosition: PropTypes.number
-}
+  scrollPosition: PropTypes.number,
+};
 
 function NavLogo({ scrollPosition }) {
   return (
@@ -81,8 +82,8 @@ function NavLogo({ scrollPosition }) {
 }
 
 NavLogo.propTypes = {
-  scrollPosition: PropTypes.any
-}
+  scrollPosition: PropTypes.any,
+};
 
 function TwitterIcon() {
   return (
@@ -108,7 +109,7 @@ function TwitterIcon() {
   );
 }
 
-function Socials() {
+function Socials({ scrollPosition }) {
   return (
     <div className="xl:flex gap-2 items-center justify-center hidden">
       <a href="https://www.nfd.gg/">
@@ -144,9 +145,19 @@ function Socials() {
           <TwitterIcon></TwitterIcon>
         </div>
       </a>
+      <a
+        href="https://combine.nfd.gg/"
+        className={`hidden ${scrollPosition > 0 ? "inline" : ""}`}
+      >
+        <NavButton text='"Combine" software' />
+      </a>
     </div>
   );
 }
+
+Socials.propTypes = {
+  scrollPosition: PropTypes.number,
+};
 
 function DiscordIcon() {
   return (
@@ -328,16 +339,17 @@ DropDownButton.propTypes = {
   setIsToggleOpen: PropTypes.func,
 };
 
-const Navbar = () => {
-  const [isToggleOpen, setIsToggleOpen] = useState(false);
-  const scrollPosition = useScrollPosition();
-
-  // console.log(scrollPosition);
-
+function NavBarMini(props) {
   return (
     <header
-      className={`sticky top-0 left-0 z-20 xl:bg-white/90 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden max-w-[95%] mx-auto rounded-[30px] mt-3 py-1 ${
-        scrollPosition > 0 ? "xl:bg-[#37313ccc] xl:max-w-full rounded-none" : ""
+      className={`sticky top-0 left-0 z-20 xl:bg-[#37313ccc] after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full lg:backdrop-blur-sm lg:after:hidden xl:max-w-[95%] mx-auto rounded-[30px]  mt-3 py-1 ${
+        props.scrollPosition === 0
+          ? "xl:bg-white/90 "
+          : ""
+      } ${
+        props.scrollPosition > 0
+          ? "xl:rounded-none xl:max-w-full"
+          : ""
       }`}
     >
       <div className="relative px-8 w-full">
@@ -346,19 +358,40 @@ const Navbar = () => {
           className="flex items-stretch justify-between font-medium text-slate-700"
           role="navigation"
         >
-          <NavLogo scrollPosition={scrollPosition} />
+          <NavLogo scrollPosition={props.scrollPosition} />
           <DropDownButton
-            isToggleOpen={isToggleOpen}
-            setIsToggleOpen={setIsToggleOpen}
+            isToggleOpen={props.isToggleOpen}
+            setIsToggleOpen={props.setIsToggleOpen}
           ></DropDownButton>
           <NavigationLinks
-            scrollPosition={scrollPosition}
-            isToggleOpen={isToggleOpen}
+            scrollPosition={props.scrollPosition}
+            isToggleOpen={props.isToggleOpen}
           ></NavigationLinks>
-          <Socials></Socials>
+          <Socials scrollPosition={props.scrollPosition}></Socials>
         </nav>
       </div>
     </header>
+  );
+}
+
+NavBarMini.propTypes = {
+  isToggleOpen: PropTypes.any,
+  scrollPosition: PropTypes.number,
+  setIsToggleOpen: PropTypes.any
+}
+
+const Navbar = () => {
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const scrollPosition = useScrollPosition();
+
+  // console.log(scrollPosition);
+
+  return (
+    <NavBarMini
+      isToggleOpen={isToggleOpen}
+      setIsToggleOpen={setIsToggleOpen}
+      scrollPosition={scrollPosition}
+    ></NavBarMini>
   );
 };
 
